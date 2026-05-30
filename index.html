@@ -3,194 +3,173 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>InstaGet — Download Instagram Reels, Posts & Stories Free</title>
+  <title>InstaGet — Download Instagram Reels, Posts &amp; Stories Free</title>
   <meta name="description" content="Download Instagram Reels, Posts, Stories instantly in HD. Free, no login, no watermark."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23b06aff'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='26' font-family='sans-serif' font-weight='bold'>IG</text></svg>"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%235DB035'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='26' font-family='sans-serif' font-weight='bold'>IG</text></svg>"/>
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
-<!-- Orbs & Canvas -->
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-<canvas id="particle-canvas"></canvas>
+<!-- TOP BAR -->
+<header class="top-bar">
+  <div class="top-bar-left">
+    <p class="app-logo">InstaGet</p>
+  </div>
+  <div class="top-bar-right">
+    <button class="icon-btn" id="bell-btn" aria-label="Notifications">🔔</button>
+    <div class="avatar">IG</div>
+  </div>
+</header>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <a class="nav-logo" href="index.html">InstaGet</a>
-  <div class="nav-right">
-    <div class="nav-pill-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="privacy.html">Privacy</a>
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-greeting">Hey there,</p>
+    <h1 class="hero-title">Download<br><span class="hero-accent">Anything.</span></h1>
+    <p class="hero-sub">Save Reels, Posts &amp; Stories from Instagram<br>instantly in full HD — no login, no watermark.</p>
+
+    <!-- Content type cards -->
+    <div class="media-row-header">
+      <span class="media-row-label">Content Types</span>
+      <button class="see-all-btn">See all</button>
     </div>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-      <span></span><span></span><span></span>
+    <div class="media-cards-scroll">
+      <div class="media-card" onclick="document.getElementById('url-input').focus()">
+        <div class="media-card-visual reels-visual">🎬</div>
+        <span class="media-card-name">Reels</span>
+        <span class="media-card-sub">MP4 HD</span>
+      </div>
+      <div class="media-card" onclick="document.getElementById('url-input').focus()">
+        <div class="media-card-visual posts-visual">🖼️</div>
+        <span class="media-card-name">Posts</span>
+        <span class="media-card-sub">JPEG / PNG</span>
+      </div>
+      <div class="media-card" onclick="document.getElementById('url-input').focus()">
+        <div class="media-card-visual stories-visual">📖</div>
+        <span class="media-card-name">Stories</span>
+        <span class="media-card-sub">MP4 / IMG</span>
+      </div>
+      <div class="media-card" onclick="document.getElementById('url-input').focus()">
+        <div class="media-card-visual carousel-visual">🎠</div>
+        <span class="media-card-name">Carousel</span>
+        <span class="media-card-sub">Multi-file</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD SECTION -->
+  <section class="download-section">
+    <div class="scan-card">
+      <div class="scan-area">
+        <div class="scan-icon">⬇️</div>
+        <p class="scan-text">Paste your Instagram link below</p>
+      </div>
+      <div class="input-area">
+        <div class="url-input-wrap">
+          <span class="input-icon">🔗</span>
+          <input
+            class="url-input"
+            id="url-input"
+            type="url"
+            placeholder="instagram.com/reel/..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+        <button class="btn-download" id="download-btn">⬇&nbsp;&nbsp;Download Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPINNER -->
+  <div id="loading-spinner" class="hidden"><div class="spinner"></div></div>
+
+  <!-- RESULT -->
+  <div id="result-section" class="hidden"></div>
+
+  <!-- FEATURE CARDS -->
+  <section class="features-section">
+    <h2 class="section-heading">Why InstaGet?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#EAF5E1;color:#5DB035">🎬</div>
+        <span class="feature-val">MP4</span>
+        <span class="feature-label">Video Format</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#FFF3E0;color:#FF9500">⚡</div>
+        <span class="feature-val">HD</span>
+        <span class="feature-label">Top Quality</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#FCE4EC;color:#E91E63">🔓</div>
+        <span class="feature-val">Free</span>
+        <span class="feature-label">No Login</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <h2 class="section-heading">How It Works</h2>
+    <div class="how-list">
+      <div class="how-item">
+        <div class="how-num">1</div>
+        <div class="how-content">
+          <span class="how-name">Copy the Link</span>
+          <span class="how-desc">Tap ⋯ on any Reel, Post or Story → "Copy Link"</span>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">2</div>
+        <div class="how-content">
+          <span class="how-name">Paste &amp; Download</span>
+          <span class="how-desc">Paste the URL into the bar above and tap Download Now</span>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">3</div>
+        <div class="how-content">
+          <span class="how-name">Save to Device</span>
+          <span class="how-desc">Pick your format — full HD, no watermarks, ever</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav" aria-label="Main navigation">
+  <div class="bnav-pill">
+    <button class="bnav-btn active" onclick="location='index.html'" aria-label="Home">
+      <span class="bnav-icon">🏠</span>
+    </button>
+    <button class="bnav-btn" onclick="location='about.html'" aria-label="About">
+      <span class="bnav-icon">⭐</span>
+    </button>
+    <button class="bnav-center" id="bnav-dl" aria-label="Download">⬇</button>
+    <button class="bnav-btn" onclick="location='faq.html'" aria-label="FAQ">
+      <span class="bnav-icon">❓</span>
+    </button>
+    <button class="bnav-btn" onclick="location='privacy.html'" aria-label="Privacy">
+      <span class="bnav-icon">🔒</span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile nav drawer -->
-<div class="nav-drawer" id="nav-menu">
-  <a href="index.html" class="active">Home</a>
-  <a href="about.html">About</a>
-  <a href="faq.html">FAQ</a>
-  <a href="privacy.html">Privacy</a>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-
-  <!-- Stacked Cards (like reference image) -->
-  <div class="card-stack">
-    <!-- Back card -->
-    <div class="preview-card">
-      <div class="card-logo">🎬</div>
-      <div>
-        <div class="card-label">Instagram Reels</div>
-        <div class="card-sub">Short video content</div>
-      </div>
-    </div>
-    <!-- Middle card -->
-    <div class="preview-card">
-      <div class="card-logo">🖼️</div>
-      <div>
-        <div class="card-label">Instagram Posts</div>
-        <div class="card-sub">Photos &amp; carousels</div>
-      </div>
-    </div>
-    <!-- Front card -->
-    <div class="preview-card">
-      <div class="card-logo">📖</div>
-      <div>
-        <div class="card-label">Instagram Stories</div>
-        <div class="card-sub">24-hour content</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Badge -->
-  <div class="hero-badge">✦ FREE &nbsp;·&nbsp; NO LOGIN &nbsp;·&nbsp; HD QUALITY</div>
-
-  <!-- Title -->
-  <h1 class="hero-title">
-    Download<br/>
-    <span class="g">Anything.</span>
-  </h1>
-  <p class="hero-sub">Save Reels, Posts and Stories from Instagram instantly — in full HD, no watermarks.</p>
-
-  <!-- Tabs -->
-  <div class="tabs-row">
-    <button class="tab-btn active" data-tab="reels">🎬 Reels</button>
-    <button class="tab-btn" data-tab="posts">🖼️ Posts</button>
-    <button class="tab-btn" data-tab="stories">📖 Stories</button>
-    <button class="tab-btn" data-tab="profile">👤 Profile</button>
-  </div>
-
-  <!-- Input & Button -->
-  <div class="input-group">
-    <input
-      class="url-input"
-      id="url-input"
-      type="url"
-      placeholder="Paste Instagram URL here…"
-      autocomplete="off"
-      spellcheck="false"
-    />
-    <button class="btn-cta" id="download-btn">⬇&nbsp;&nbsp;Download Now</button>
-  </div>
-
-  <!-- Spinner -->
-  <div id="loading-spinner" class="hidden"><div class="spinner"></div></div>
-
-  <!-- Trust -->
-  <div class="trust-row">
-    <span class="trust-item"><span class="trust-dot"></span>HD Quality</span>
-    <span class="trust-item"><span class="trust-dot"></span>No Watermark</span>
-    <span class="trust-item"><span class="trust-dot"></span>100% Free</span>
-    <span class="trust-item"><span class="trust-dot"></span>Instant</span>
-  </div>
-
-</section>
-
-<!-- RESULT -->
-<div id="result-section" class="hidden"></div>
-
-<!-- HOW IT WORKS -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title reveal">How It <span class="g">Works</span></h2>
-    <div class="cards-grid">
-      <div class="step-card reveal">
-        <div class="step-icon-wrap">🔗</div>
-        <h3>Copy the Link</h3>
-        <p>Tap ⋯ on any Reel, Post or Story and select "Copy Link" from the menu.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-icon-wrap">📋</div>
-        <h3>Paste &amp; Download</h3>
-        <p>Paste the URL into the input bar and tap the Download Now button.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-icon-wrap">💾</div>
-        <h3>Save to Device</h3>
-        <p>Pick your format and save in full HD — no account, no watermarks, ever.</p>
-      </div>
-    </div>
-    <div class="badges">
-      <span class="badge">MP4 Video</span>
-      <span class="badge">JPEG Image</span>
-      <span class="badge">HD Quality</span>
-      <span class="badge">No Watermark</span>
-      <span class="badge">No Login</span>
-      <span class="badge">Reels</span>
-      <span class="badge">Stories</span>
-      <span class="badge">Carousels</span>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span class="footer-logo">InstaGet</span>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
-    <a href="privacy.html">Privacy</a>
-  </div>
-  <p class="footer-note">© 2025 InstaGet · For personal use only · We never store your data.</p>
-</footer>
-
-<!-- BOTTOM NAV (mobile-first like reference) -->
-<nav class="bottom-nav">
-  <button class="bnav-btn active" onclick="location='index.html'">
-    <span class="icon">🏠</span>
-    <span class="label">Home</span>
-  </button>
-  <button class="bnav-btn" onclick="location='about.html'">
-    <span class="icon">⭐</span>
-    <span class="label">About</span>
-  </button>
-  <!-- Center download button -->
-  <button class="bnav-center" onclick="document.getElementById('url-input').focus();document.getElementById('url-input').scrollIntoView({behavior:'smooth'})">
-    ⬇
-  </button>
-  <button class="bnav-btn" onclick="location='faq.html'">
-    <span class="icon">❓</span>
-    <span class="label">FAQ</span>
-  </button>
-  <button class="bnav-btn" onclick="location='privacy.html'">
-    <span class="icon">🔒</span>
-    <span class="label">Privacy</span>
-  </button>
-</nav>
-
 <div id="toast-container"></div>
 
-<script src="js/particles.js"></script>
+<script>
+  // Bottom nav center button scroll
+  document.getElementById('bnav-dl').addEventListener('click', () => {
+    const inp = document.getElementById('url-input');
+    inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => inp.focus(), 400);
+  });
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
