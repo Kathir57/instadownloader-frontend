@@ -5,61 +5,142 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Privacy Policy — InstaGet</title>
   <meta name="description" content="InstaGet privacy policy — data collection, cookies, third-party services."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23b06aff'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='26' font-family='sans-serif' font-weight='bold'>IG</text></svg>"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%235DB035'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='26' font-family='sans-serif' font-weight='bold'>IG</text></svg>"/>
   <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .page-header { padding:1.5rem 0 1.25rem; }
+    .page-header h1 { font-size:2.2rem; font-weight:900; letter-spacing:-1px; margin-bottom:.4rem; }
+    .page-header h1 span { color:var(--green); }
+    .page-header p { font-size:.88rem; color:var(--text2); line-height:1.65; }
+
+    .privacy-list { display:flex; flex-direction:column; gap:.65rem; margin-bottom:2rem; }
+    .privacy-card {
+      background:var(--surface); border-radius:var(--radius);
+      box-shadow:var(--shadow-sm); padding:1.15rem 1.1rem;
+      transition:box-shadow .2s;
+    }
+    .privacy-card:hover { box-shadow:var(--shadow); }
+    .privacy-card h2 {
+      font-size:.88rem; font-weight:800; color:var(--green);
+      margin-bottom:.55rem; display:flex; align-items:center; gap:.5rem;
+    }
+    .privacy-card p,
+    .privacy-card li { font-size:.83rem; color:var(--text2); line-height:1.75; }
+    .privacy-card ul { padding-left:1.1rem; margin-top:.35rem; }
+    .privacy-card li { margin-bottom:.2rem; }
+
+    .contact-card {
+      background:var(--green-bg); border-radius:var(--radius);
+      padding:1.2rem 1.1rem; margin-bottom:2rem;
+      border:1.5px solid rgba(93,176,53,.25);
+    }
+    .contact-card h2 { font-size:.88rem; font-weight:800; color:var(--green); margin-bottom:.5rem; }
+    .contact-card p  { font-size:.83rem; color:var(--text2); line-height:1.7; margin-bottom:.4rem; }
+    .contact-card a  { font-size:.88rem; font-weight:700; color:var(--green); word-break:break-all; }
+
+    .page-footer { text-align:center; padding:1.5rem 0 2rem; }
+    .footer-logo { font-size:1.1rem; font-weight:900; color:var(--text); display:block; margin-bottom:.75rem; }
+    .footer-links { display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap; margin-bottom:.6rem; }
+    .footer-links a { font-size:.82rem; color:var(--text2); transition:.2s; }
+    .footer-links a:hover { color:var(--green); }
+    .footer-note { font-size:.74rem; color:var(--text2); opacity:.6; }
+  </style>
 </head>
 <body>
-<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
-<canvas id="particle-canvas"></canvas>
 
-<nav class="navbar">
-  <a class="nav-logo" href="index.html">InstaGet</a>
-  <div class="nav-right">
-    <div class="nav-pill-links">
-      <a href="index.html">Home</a><a href="about.html">About</a>
-      <a href="faq.html">FAQ</a><a href="privacy.html" class="active">Privacy</a>
+<!-- TOP BAR -->
+<header class="top-bar">
+  <p class="app-logo">InstaGet</p>
+  <div class="top-bar-right">
+    <button class="icon-btn" onclick="history.back()" aria-label="Back">←</button>
+    <div class="avatar">IG</div>
+  </div>
+</header>
+
+<main class="main-content">
+
+  <div class="page-header">
+    <h1>Privacy <span>Policy</span></h1>
+    <p>Last updated: May 2025. We believe privacy is a right, not a privilege.</p>
+  </div>
+
+  <div class="privacy-list">
+
+    <div class="privacy-card">
+      <h2>🔒 1. Data Collection</h2>
+      <p>InstaGet does not collect, store, or sell any personally identifiable information. The Instagram URL you paste is used only to complete your request and discarded immediately. We do not log your IP address, name, email, or account info.</p>
     </div>
-    <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+
+    <div class="privacy-card">
+      <h2>🎬 2. Media Files</h2>
+      <p>We act as an intermediary to retrieve publicly available media from Instagram's servers. We do not store downloaded media files, cache any content, or access private accounts. All media streams directly from Instagram's CDN to your device.</p>
+    </div>
+
+    <div class="privacy-card">
+      <h2>🍪 3. Cookies</h2>
+      <p>InstaGet does not use tracking, advertising, or analytics cookies. Minimal session cookies strictly necessary for operation may be used. These contain no personal data and expire when you close your browser.</p>
+    </div>
+
+    <div class="privacy-card">
+      <h2>🌐 4. Third-Party Services</h2>
+      <p>Our site loads fonts from Google Fonts (fonts.googleapis.com). Google may collect usage data per their privacy policy. We do not use Google Analytics, Facebook Pixel, or any third-party tracking scripts.</p>
+    </div>
+
+    <div class="privacy-card">
+      <h2>👶 5. Children's Privacy</h2>
+      <p>InstaGet is not directed at children under 13. We do not knowingly collect information from children. If you believe a child has used our service, please contact us immediately.</p>
+    </div>
+
+    <div class="privacy-card">
+      <h2>📋 6. Your Rights</h2>
+      <p>Since we store no personal data, there is nothing to request, export, or delete. You may use InstaGet without creating an account and without providing any personal information.</p>
+    </div>
+
+    <div class="privacy-card">
+      <h2>🔄 7. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy periodically. Changes will be posted here with an updated date. Continued use of InstaGet constitutes acceptance of the updated policy.</p>
+    </div>
+
   </div>
-</nav>
-<div class="nav-drawer" id="nav-menu">
-  <a href="index.html">Home</a><a href="about.html">About</a>
-  <a href="faq.html">FAQ</a><a href="privacy.html" class="active">Privacy</a>
-</div>
 
-<div class="about-hero">
-  <h1>Privacy <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Policy</span></h1>
-  <p>Last updated: May 2025. We believe privacy is a right, not a privilege.</p>
-</div>
-
-<section class="section">
-  <div class="container" style="max-width:760px">
-    <div class="privacy-section reveal"><h2>1. Data Collection</h2><p>InstaGet does not collect, store, or sell any personally identifiable information. The Instagram URL you paste is used only to complete your request and discarded immediately. We do not log your IP address, name, email, or account info.</p></div>
-    <div class="privacy-section reveal"><h2>2. Media Files</h2><p>We act as an intermediary to retrieve publicly available media from Instagram's servers. We do not store downloaded media files, cache any content, or access private accounts. All media streams directly from Instagram's CDN to your device.</p></div>
-    <div class="privacy-section reveal"><h2>3. Cookies</h2><p>InstaGet does not use tracking, advertising, or analytics cookies. Minimal session cookies strictly necessary for operation may be used. These contain no personal data and expire when you close your browser.</p></div>
-    <div class="privacy-section reveal"><h2>4. Third-Party Services</h2><p>Our site loads fonts from Google Fonts (fonts.googleapis.com). Google may collect usage data per their privacy policy. We do not use Google Analytics, Facebook Pixel, or any third-party tracking scripts.</p></div>
-    <div class="privacy-section reveal"><h2>5. Children's Privacy</h2><p>InstaGet is not directed at children under 13. We do not knowingly collect information from children. If you believe a child has used our service, contact us immediately.</p></div>
-    <div class="privacy-section reveal"><h2>6. Changes to This Policy</h2><p>We may update this Privacy Policy periodically. Changes will be posted here with an updated date. Continued use of InstaGet constitutes acceptance of the updated policy.</p></div>
-    <div class="privacy-section reveal"><h2>7. Contact</h2><p>Questions about this Privacy Policy? We're committed to responding promptly.</p><p style="margin-top:.6rem;color:var(--cyan);font-size:.88rem">contact@instagetapp.com</p></div>
+  <div class="contact-card">
+    <h2>✉️ Contact Us</h2>
+    <p>Questions about this Privacy Policy? We're committed to responding promptly.</p>
+    <a href="mailto:contact@instagetapp.com">contact@instagetapp.com</a>
   </div>
-</section>
 
-<footer>
-  <span class="footer-logo">InstaGet</span>
-  <div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a></div>
-  <p class="footer-note">© 2025 InstaGet · For personal use only.</p>
-</footer>
+  <footer class="page-footer">
+    <span class="footer-logo">InstaGet</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <p class="footer-note">© 2025 InstaGet · For personal use only.</p>
+  </footer>
 
-<nav class="bottom-nav">
-  <button class="bnav-btn" onclick="location='index.html'"><span class="icon">🏠</span><span class="label">Home</span></button>
-  <button class="bnav-btn" onclick="location='about.html'"><span class="icon">⭐</span><span class="label">About</span></button>
-  <button class="bnav-center" onclick="location='index.html'">⬇</button>
-  <button class="bnav-btn" onclick="location='faq.html'"><span class="icon">❓</span><span class="label">FAQ</span></button>
-  <button class="bnav-btn active" onclick="location='privacy.html'"><span class="icon">🔒</span><span class="label">Privacy</span></button>
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav" aria-label="Main navigation">
+  <div class="bnav-pill">
+    <button class="bnav-btn" onclick="location='index.html'" aria-label="Home">
+      <span class="bnav-icon">🏠</span>
+    </button>
+    <button class="bnav-btn" onclick="location='about.html'" aria-label="About">
+      <span class="bnav-icon">⭐</span>
+    </button>
+    <button class="bnav-center" onclick="location='index.html'" aria-label="Download">⬇</button>
+    <button class="bnav-btn" onclick="location='faq.html'" aria-label="FAQ">
+      <span class="bnav-icon">❓</span>
+    </button>
+    <button class="bnav-btn active" onclick="location='privacy.html'" aria-label="Privacy">
+      <span class="bnav-icon">🔒</span>
+    </button>
+  </div>
 </nav>
 
 <div id="toast-container"></div>
-<script src="js/particles.js"></script>
-<script src="js/main.js"></script>
 </body>
 </html>
