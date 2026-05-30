@@ -72,35 +72,17 @@ async function fetchMediaInfo(url) {
   return res.json();
 }
 
-/* ── Direct File Download (blob) ── */
-async function downloadFile(url, filename) {
-  const btn = event.currentTarget;
-  const origText = btn.innerHTML;
-  btn.innerHTML = '⏳ Downloading…';
-  btn.disabled = true;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('Fetch failed');
-    const blob = await res.blob();
-    const ext = blob.type.includes('video') ? 'mp4'
-               : blob.type.includes('jpeg') ? 'jpg'
-               : blob.type.includes('png')  ? 'png' : 'mp4';
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = filename || `instaget_download.${ext}`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(a.href);
-    showSuccess('Download started!');
-  } catch (err) {
-    // Fallback: open in new tab if blob fetch blocked
-    window.open(url, '_blank');
-    showSuccess('Opened in new tab — long-press to save.');
-  } finally {
-    btn.innerHTML = origText;
-    btn.disabled = false;
-  }
+/* ── Direct File Download ── */
+function downloadFile(url, filename, btn) {
+  // Create hidden anchor and click — triggers Save dialog, no new tab
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename || 'instaget_download.mp4';
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  showSuccess('⬇ Download started!');
 }
 
 /* ── Render Result ── */
@@ -227,8 +209,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const urlInput = $('#url-input');
   if (urlInput) {
+    // Auto-fetch when Enter pressed
     urlInput.addEventListener('keydown', e => {
       if (e.key === 'Enter') handleDownload();
+    });
+
+    // Auto-fetch immediately on paste — no button click needed
+    urlInput.addEventListener('paste', e => {
+      // Let the paste populate the field first
+      setTimeout(() => {
+        const pasted = urlInput.value.trim();
+        if (pasted && validateInstagramURL(pasted)) {
+          handleDownload();
+        }
+      }, 80);
+    });
+
+    // Also auto-fetch if user types/fills a full valid URL (e.g. from browser autofill)
+    urlInput.addEventListener('input', () => {
+      clearTimeout(urlInput._autoTimer);
+      urlInput._autoTimer = setTimeout(() => {
+        const val = urlInput.value.trim();
+        if (val.length > 20 && validateInstagramURL(val)) {
+          handleDownload();
+        }
+      }, 900);
     });
   }
 });
