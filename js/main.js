@@ -3,7 +3,7 @@
    Pure vanilla JS, no jQuery, no frameworks
    ========================================= */
 
-const API_BASE = 'http://140.245.226.67/api/info';
+const API = 'https://enrollment-notices-real-standing.trycloudflare.com/api/info';
 
 /* ── Utility ── */
 function $(sel, ctx = document) { return ctx.querySelector(sel); }
