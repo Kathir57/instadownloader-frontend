@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Privacy Policy — InstaGet</title>
+  <meta name="description" content="InstaGet privacy policy — data collection, cookies, third-party services."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23b06aff'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='26' font-family='sans-serif' font-weight='bold'>IG</text></svg>"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+<canvas id="particle-canvas"></canvas>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">InstaGet</a>
+  <div class="nav-right">
+    <div class="nav-pill-links">
+      <a href="index.html">Home</a><a href="about.html">About</a>
+      <a href="faq.html">FAQ</a><a href="privacy.html" class="active">Privacy</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="nav-menu">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="faq.html">FAQ</a><a href="privacy.html" class="active">Privacy</a>
+</div>
+
+<div class="about-hero">
+  <h1>Privacy <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Policy</span></h1>
+  <p>Last updated: May 2025. We believe privacy is a right, not a privilege.</p>
+</div>
+
+<section class="section">
+  <div class="container" style="max-width:760px">
+    <div class="privacy-section reveal"><h2>1. Data Collection</h2><p>InstaGet does not collect, store, or sell any personally identifiable information. The Instagram URL you paste is used only to complete your request and discarded immediately. We do not log your IP address, name, email, or account info.</p></div>
+    <div class="privacy-section reveal"><h2>2. Media Files</h2><p>We act as an intermediary to retrieve publicly available media from Instagram's servers. We do not store downloaded media files, cache any content, or access private accounts. All media streams directly from Instagram's CDN to your device.</p></div>
+    <div class="privacy-section reveal"><h2>3. Cookies</h2><p>InstaGet does not use tracking, advertising, or analytics cookies. Minimal session cookies strictly necessary for operation may be used. These contain no personal data and expire when you close your browser.</p></div>
+    <div class="privacy-section reveal"><h2>4. Third-Party Services</h2><p>Our site loads fonts from Google Fonts (fonts.googleapis.com). Google may collect usage data per their privacy policy. We do not use Google Analytics, Facebook Pixel, or any third-party tracking scripts.</p></div>
+    <div class="privacy-section reveal"><h2>5. Children's Privacy</h2><p>InstaGet is not directed at children under 13. We do not knowingly collect information from children. If you believe a child has used our service, contact us immediately.</p></div>
+    <div class="privacy-section reveal"><h2>6. Changes to This Policy</h2><p>We may update this Privacy Policy periodically. Changes will be posted here with an updated date. Continued use of InstaGet constitutes acceptance of the updated policy.</p></div>
+    <div class="privacy-section reveal"><h2>7. Contact</h2><p>Questions about this Privacy Policy? We're committed to responding promptly.</p><p style="margin-top:.6rem;color:var(--cyan);font-size:.88rem">contact@instagetapp.com</p></div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">InstaGet</span>
+  <div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a></div>
+  <p class="footer-note">© 2025 InstaGet · For personal use only.</p>
+</footer>
+
+<nav class="bottom-nav">
+  <button class="bnav-btn" onclick="location='index.html'"><span class="icon">🏠</span><span class="label">Home</span></button>
+  <button class="bnav-btn" onclick="location='about.html'"><span class="icon">⭐</span><span class="label">About</span></button>
+  <button class="bnav-center" onclick="location='index.html'">⬇</button>
+  <button class="bnav-btn" onclick="location='faq.html'"><span class="icon">❓</span><span class="label">FAQ</span></button>
+  <button class="bnav-btn active" onclick="location='privacy.html'"><span class="icon">🔒</span><span class="label">Privacy</span></button>
+</nav>
+
+<div id="toast-container"></div>
+<script src="js/particles.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

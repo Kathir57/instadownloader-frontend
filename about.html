@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>About — InstaGet</title>
+  <meta name="description" content="About InstaGet — free Instagram downloader. No login, HD quality, no watermarks."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23b06aff'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='26' font-family='sans-serif' font-weight='bold'>IG</text></svg>"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+<canvas id="particle-canvas"></canvas>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">InstaGet</a>
+  <div class="nav-right">
+    <div class="nav-pill-links">
+      <a href="index.html">Home</a><a href="about.html" class="active">About</a>
+      <a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="nav-menu">
+  <a href="index.html">Home</a><a href="about.html" class="active">About</a>
+  <a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a>
+</div>
+
+<div class="about-hero">
+  <h1>About <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">InstaGet</span></h1>
+  <p>A free, privacy-first Instagram downloader. HD quality, zero watermarks, no account needed — ever.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title reveal">Why <span class="g">InstaGet?</span></h2>
+    <div class="cards-grid">
+      <div class="step-card reveal"><div class="step-icon-wrap">🔒</div><h3>Privacy First</h3><p>We never store URLs or files. Everything is discarded immediately after your request.</p></div>
+      <div class="step-card reveal"><div class="step-icon-wrap">⚡</div><h3>Lightning Fast</h3><p>Our optimised API fetches media in milliseconds. No queues, no waiting.</p></div>
+      <div class="step-card reveal"><div class="step-icon-wrap">🎬</div><h3>All Formats</h3><p>Reels, Posts, Carousels, Stories, IGTV — if it's public on Instagram, we can fetch it.</p></div>
+      <div class="step-card reveal"><div class="step-icon-wrap">📱</div><h3>Mobile Ready</h3><p>Fully responsive. Works perfectly on phones, tablets and desktops.</p></div>
+      <div class="step-card reveal"><div class="step-icon-wrap">🌐</div><h3>No Account Needed</h3><p>Public content requires zero authentication. Just paste and download.</p></div>
+      <div class="step-card reveal"><div class="step-icon-wrap">💎</div><h3>HD Quality</h3><p>Always the highest quality available — no compression, no re-encoding, no watermarks.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title reveal">By the <span class="g">Numbers</span></h2>
+    <div class="stats-grid">
+      <div class="stat-card reveal"><span class="stat-num">100%</span><span class="stat-label">Free Forever</span></div>
+      <div class="stat-card reveal"><span class="stat-num">0</span><span class="stat-label">Login Required</span></div>
+      <div class="stat-card reveal"><span class="stat-num">HD</span><span class="stat-label">Quality Always</span></div>
+      <div class="stat-card reveal"><span class="stat-num">0</span><span class="stat-label">Watermarks Added</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="mission-card reveal">
+      <h2>Our Mission</h2>
+      <p>InstaGet was built on one belief: your content is yours. Whether you're saving your own posts, archiving memories, or downloading inspiration — you deserve a tool that respects your privacy and just works. No dark patterns, no fees, no data harvesting. Just a clean, fast, beautiful downloader.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">InstaGet</span>
+  <div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a></div>
+  <p class="footer-note">© 2025 InstaGet · For personal use only.</p>
+</footer>
+
+<nav class="bottom-nav">
+  <button class="bnav-btn" onclick="location='index.html'"><span class="icon">🏠</span><span class="label">Home</span></button>
+  <button class="bnav-btn active" onclick="location='about.html'"><span class="icon">⭐</span><span class="label">About</span></button>
+  <button class="bnav-center" onclick="location='index.html'">⬇</button>
+  <button class="bnav-btn" onclick="location='faq.html'"><span class="icon">❓</span><span class="label">FAQ</span></button>
+  <button class="bnav-btn" onclick="location='privacy.html'"><span class="icon">🔒</span><span class="label">Privacy</span></button>
+</nav>
+
+<div id="toast-container"></div>
+<script src="js/particles.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

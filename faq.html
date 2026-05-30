@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>FAQ — InstaGet</title>
+  <meta name="description" content="Frequently asked questions about InstaGet — Instagram Reels, Posts and Stories downloader."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23b06aff'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='26' font-family='sans-serif' font-weight='bold'>IG</text></svg>"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+<canvas id="particle-canvas"></canvas>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">InstaGet</a>
+  <div class="nav-right">
+    <div class="nav-pill-links">
+      <a href="index.html">Home</a><a href="about.html">About</a>
+      <a href="faq.html" class="active">FAQ</a><a href="privacy.html">Privacy</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="nav-menu">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="faq.html" class="active">FAQ</a><a href="privacy.html">Privacy</a>
+</div>
+
+<div class="about-hero">
+  <h1>Asked <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Questions</span></h1>
+  <p>Everything you need to know about downloading Instagram media with InstaGet.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q">How do I download an Instagram Reel? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Open Instagram, tap ⋯ on the Reel and select "Copy Link." Paste it into InstaGet's input bar and press Download Now.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Can I download Instagram Stories? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes! Stories can be downloaded while active (within 24 hours). Paste the story or profile link and we'll extract available media.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Does InstaGet work on private accounts? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">InstaGet only works with publicly available content. We cannot bypass Instagram's privacy settings.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Is InstaGet completely free? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes, 100% free. No hidden fees, no premium plans, no account registration required. Always.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Will there be a watermark on my download? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Never. We download the original media file directly from Instagram's servers. No watermarks added, ever.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What formats can I download? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Videos download as MP4. Images download as JPEG or PNG. Carousel posts: each image/video is available individually.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Do I need an account or login? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Absolutely not. Zero registration needed. Just paste the Instagram URL and download.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Is it legal to download Instagram content? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Downloading public content for personal offline viewing is generally accepted. Do not re-upload or claim ownership of others' content.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Why isn't my download working? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Common reasons: private account, deleted content, incorrectly copied URL, or a temporary block from Instagram. Try again in a few seconds.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Does InstaGet store my downloaded content? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">No. We act as a proxy only. Files are never stored on our servers. Your download goes directly from Instagram to your device.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">InstaGet</span>
+  <div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a></div>
+  <p class="footer-note">© 2025 InstaGet · For personal use only.</p>
+</footer>
+
+<nav class="bottom-nav">
+  <button class="bnav-btn" onclick="location='index.html'"><span class="icon">🏠</span><span class="label">Home</span></button>
+  <button class="bnav-btn" onclick="location='about.html'"><span class="icon">⭐</span><span class="label">About</span></button>
+  <button class="bnav-center" onclick="location='index.html'">⬇</button>
+  <button class="bnav-btn active" onclick="location='faq.html'"><span class="icon">❓</span><span class="label">FAQ</span></button>
+  <button class="bnav-btn" onclick="location='privacy.html'"><span class="icon">🔒</span><span class="label">Privacy</span></button>
+</nav>
+
+<div id="toast-container"></div>
+<script src="js/particles.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.closest('.faq-item');
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!open) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
