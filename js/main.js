@@ -72,35 +72,63 @@ async function fetchMediaInfo(url) {
   return res.json();
 }
 
+/* ── Direct File Download (blob) ── */
+async function downloadFile(url, filename) {
+  const btn = event.currentTarget;
+  const origText = btn.innerHTML;
+  btn.innerHTML = '⏳ Downloading…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Fetch failed');
+    const blob = await res.blob();
+    const ext = blob.type.includes('video') ? 'mp4'
+               : blob.type.includes('jpeg') ? 'jpg'
+               : blob.type.includes('png')  ? 'png' : 'mp4';
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename || `instaget_download.${ext}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(a.href);
+    showSuccess('Download started!');
+  } catch (err) {
+    // Fallback: open in new tab if blob fetch blocked
+    window.open(url, '_blank');
+    showSuccess('Opened in new tab — long-press to save.');
+  } finally {
+    btn.innerHTML = origText;
+    btn.disabled = false;
+  }
+}
+
 /* ── Render Result ── */
 function displayResult(data) {
   const resultSection = $('#result-section');
   if (!resultSection) return;
 
-  // Build download buttons per media item
   const formats = data.formats || [];
-  const title = data.title || 'Instagram Media';
-  const thumb = data.thumbnail || '';
+  const title   = data.title || 'Instagram Media';
+  const thumb   = data.thumbnail || '';
 
   let buttonsHTML = '';
   if (formats.length > 0) {
     buttonsHTML = formats.map((f, i) => {
-      return `<a class="dl-btn" href="${f.url}" target="_blank" download>
-              ⬇ Download ${f.quality || (i + 1)} ${f.ext ? f.ext.toUpperCase() : 'MP4'}
-            </a>`;
+      const label = `⬇ Download ${f.quality || (i + 1)} ${f.ext ? f.ext.toUpperCase() : 'MP4'}`;
+      const fname = `instaget_${f.quality || (i + 1)}.${f.ext || 'mp4'}`;
+      return `<button class="dl-btn" onclick="downloadFile('${f.url}','${fname}')">${label}</button>`;
     }).join('');
   } else if (data.url) {
-    buttonsHTML = `<a class="dl-btn" href="${data.url}" target="_blank" download>⬇ Download</a>`;
+    buttonsHTML = `<button class="dl-btn" onclick="downloadFile('${data.url}','instaget_download.mp4')">⬇ Download</button>`;
   }
 
   resultSection.innerHTML = `
-    <div class="result-card floating-card">
-      <div class="result-header">
-        ${thumb ? `<img class="result-thumb" src="${thumb}" alt="Thumbnail" onerror="this.style.display='none'">` : ''}
-        <div class="result-meta">
-          <p class="result-title">${title}</p>
-          <button class="copy-btn" onclick="copyURL()">📋 Copy URL</button>
-        </div>
+    <div class="result-card">
+      ${thumb ? `<img class="result-thumb" src="${thumb}" alt="Thumbnail" onerror="this.style.display='none'">` : ''}
+      <div class="result-meta">
+        <p class="result-title">${title}</p>
+        <button class="copy-btn" onclick="copyURL()">📋 Copy URL</button>
       </div>
       <div class="result-downloads">
         <p class="dl-label">Select format to download:</p>
@@ -109,7 +137,7 @@ function displayResult(data) {
     </div>`;
 
   resultSection.classList.remove('hidden');
-  resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 /* ── Copy URL ── */
