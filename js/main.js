@@ -3,7 +3,7 @@
    Pure vanilla JS, no jQuery, no frameworks
    ========================================= */
 
-const API = 'https://enrollment-notices-real-standing.trycloudflare.com/api/info';
+const API = 'https://instadownloader-proxy.godofgamer678.workers.dev/api/info';
 
 /* ── Utility ── */
 function $(sel, ctx = document) { return ctx.querySelector(sel); }
