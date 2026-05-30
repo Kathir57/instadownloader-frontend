@@ -235,14 +235,15 @@ button { font-family:inherit; cursor:pointer; }
 }
 .dl-buttons { display:flex; flex-wrap:wrap; gap:.5rem; }
 .dl-btn {
-  flex:1; min-width:120px; padding:.75rem 1rem;
+  width:100%; padding:.9rem 1rem;
   border-radius:var(--radius-pill); text-align:center;
-  font-size:.85rem; font-weight:700; font-family:inherit;
+  font-size:1rem; font-weight:800; font-family:inherit;
   background:var(--grad); color:#fff; border:none; cursor:pointer;
-  box-shadow:0 4px 16px rgba(58,154,34,.3);
+  box-shadow:0 6px 24px rgba(58,154,34,.4);
   transition:.2s; display:block;
 }
-.dl-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(58,154,34,.45); }
+.dl-btn:hover { transform:translateY(-2px); box-shadow:0 10px 32px rgba(58,154,34,.5); }
+.dl-btn:disabled { opacity:.65; cursor:not-allowed; transform:none; }
 .no-media { color:var(--text2); font-size:.88rem; }
 
 /* ══ FEATURES ══ */

@@ -73,16 +73,42 @@ async function fetchMediaInfo(url) {
 }
 
 /* ── Direct File Download ── */
-function downloadFile(url, filename, btn) {
-  // Create hidden anchor and click — triggers Save dialog, no new tab
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename || 'instaget_download.mp4';
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  showSuccess('⬇ Download started!');
+async function downloadFile(url, filename, btnEl) {
+  const btn = btnEl || document.querySelector('.dl-btn-main');
+  const origText = btn ? btn.innerHTML : '';
+  if (btn) { btn.innerHTML = '⏳ Saving…'; btn.disabled = true; }
+
+  try {
+    // Try blob fetch for true same-tab save
+    const res = await fetch(url, { mode: 'cors' });
+    if (!res.ok) throw new Error('cors');
+    const blob = await res.blob();
+    const ext = blob.type.includes('video') ? 'mp4'
+               : blob.type.includes('jpeg') ? 'jpg'
+               : blob.type.includes('png')  ? 'png' : 'mp4';
+    const objUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = objUrl;
+    a.download = filename || `instaget.${ext}`;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(objUrl), 5000);
+    showSuccess('✅ Download saved!');
+  } catch {
+    // Fallback: direct anchor — browser will download or prompt save
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename || 'instaget_download.mp4';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    showSuccess('⬇ Download started!');
+  } finally {
+    if (btn) { btn.innerHTML = origText; btn.disabled = false; }
+  }
 }
 
 /* ── Render Result ── */
@@ -94,16 +120,20 @@ function displayResult(data) {
   const title   = data.title || 'Instagram Media';
   const thumb   = data.thumbnail || '';
 
-  let buttonsHTML = '';
+  // Pick the best quality (last = highest resolution usually)
+  let bestUrl  = '';
+  let bestName = 'instaget_download.mp4';
   if (formats.length > 0) {
-    buttonsHTML = formats.map((f, i) => {
-      const label = `⬇ Download ${f.quality || (i + 1)} ${f.ext ? f.ext.toUpperCase() : 'MP4'}`;
-      const fname = `instaget_${f.quality || (i + 1)}.${f.ext || 'mp4'}`;
-      return `<button class="dl-btn" onclick="downloadFile('${f.url}','${fname}')">${label}</button>`;
-    }).join('');
+    const best = formats[formats.length - 1];
+    bestUrl  = best.url;
+    bestName = `instaget_${best.quality || 'hd'}.${best.ext || 'mp4'}`;
   } else if (data.url) {
-    buttonsHTML = `<button class="dl-btn" onclick="downloadFile('${data.url}','instaget_download.mp4')">⬇ Download</button>`;
+    bestUrl  = data.url;
   }
+
+  const dlBtn = bestUrl
+    ? `<button class="dl-btn dl-btn-main" onclick="downloadFile('${bestUrl}','${bestName}',this)">⬇ Download</button>`
+    : `<p class="no-media">No downloadable media found.</p>`;
 
   resultSection.innerHTML = `
     <div class="result-card">
@@ -113,8 +143,7 @@ function displayResult(data) {
         <button class="copy-btn" onclick="copyURL()">📋 Copy URL</button>
       </div>
       <div class="result-downloads">
-        <p class="dl-label">Select format to download:</p>
-        <div class="dl-buttons">${buttonsHTML || '<p class="no-media">No downloadable media found.</p>'}</div>
+        ${dlBtn}
       </div>
     </div>`;
 
