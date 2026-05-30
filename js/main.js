@@ -63,7 +63,7 @@ function createToastContainer() {
 
 /* ── API Fetch ── */
 async function fetchMediaInfo(url) {
-  const res = await fetch(API_BASE, {
+  const res = await fetch(API, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ url }),
@@ -78,19 +78,16 @@ function displayResult(data) {
   if (!resultSection) return;
 
   // Build download buttons per media item
-  const medias = data.medias || data.data?.medias || [];
-  const title = data.title || data.data?.title || 'Instagram Media';
-  const thumb = data.thumbnail || data.data?.thumbnail || data.medias?.[0]?.url || '';
+  const formats = data.formats || [];
+  const title = data.title || 'Instagram Media';
+  const thumb = data.thumbnail || '';
 
   let buttonsHTML = '';
-  if (medias.length > 0) {
-    buttonsHTML = medias.map((m, i) => {
-      const label = m.type === 'video'
-        ? `🎬 Video ${m.quality || (i + 1)}`
-        : `🖼️ Image ${i + 1}`;
-      return `<a class="dl-btn" href="${m.url}" target="_blank" download>
-                ${label}
-              </a>`;
+  if (formats.length > 0) {
+    buttonsHTML = formats.map((f, i) => {
+      return `<a class="dl-btn" href="${f.url}" target="_blank" download>
+              ⬇ Download ${f.quality || (i + 1)} ${f.ext ? f.ext.toUpperCase() : 'MP4'}
+            </a>`;
     }).join('');
   } else if (data.url) {
     buttonsHTML = `<a class="dl-btn" href="${data.url}" target="_blank" download>⬇ Download</a>`;
