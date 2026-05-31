@@ -207,6 +207,37 @@ function copyURL() {
     .catch(() => showError('Could not copy URL.'));
 }
 
+/* ── Clipboard Auto-Detect ── */
+let _lastClipboardURL = null; // track what we already processed
+
+async function checkClipboardForInstagramURL() {
+  try {
+    // Clipboard API requires a secure context (https or localhost)
+    if (!navigator.clipboard || !navigator.clipboard.readText) return;
+
+    const text = (await navigator.clipboard.readText()).trim();
+
+    // Only act on Instagram URLs we haven't already processed
+    if (!text || text === _lastClipboardURL) return;
+    if (!validateInstagramURL(text)) return;
+
+    _lastClipboardURL = text;
+
+    const urlInput = $('#url-input');
+    if (!urlInput) return;
+
+    // Don't overwrite if the user already typed something different
+    if (urlInput.value.trim() && urlInput.value.trim() !== text) return;
+
+    urlInput.value = text;
+    showToast('📋 Instagram link detected from clipboard!', 'success');
+    // Small delay so the toast is seen before the fetch spinner kicks in
+    setTimeout(() => handleDownload(), 600);
+  } catch {
+    // Permission denied or clipboard empty — silently ignore
+  }
+}
+
 /* ── Main Download Handler ── */
 async function handleDownload() {
   const urlInput = $('#url-input');
@@ -292,10 +323,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto-fetch immediately on paste — no button click needed
     urlInput.addEventListener('paste', e => {
-      // Let the paste populate the field first
       setTimeout(() => {
         const pasted = urlInput.value.trim();
         if (pasted && validateInstagramURL(pasted)) {
+          _lastClipboardURL = pasted; // mark so focus-check doesn't double-fire
           handleDownload();
         }
       }, 80);
@@ -312,4 +343,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 900);
     });
   }
+
+  // ── Clipboard auto-detect on page load ──
+  // Small delay so the page is fully interactive before requesting clipboard
+  setTimeout(() => checkClipboardForInstagramURL(), 800);
+
+  // ── Re-check clipboard whenever user comes back to this tab ──
+  window.addEventListener('focus', () => checkClipboardForInstagramURL());
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkClipboardForInstagramURL();
+  });
 });
