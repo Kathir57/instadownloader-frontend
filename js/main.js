@@ -132,27 +132,27 @@ function displayResult(data) {
   if (videos.length > 0) {
     buttonsHTML += `<p class="dl-label">🎬 Video</p>`;
     buttonsHTML += videos.map(f =>
-      `<a class="dl-btn" href="${f.url}" target="_blank" download>
+      `<button class="dl-btn" onclick="downloadFile('${f.url}', 'instaget_${f.quality}.mp4', this)">
         ⬇ Download ${f.quality} MP4
-      </a>`
+      </button>`
     ).join('');
   }
 
   if (audios.length > 0) {
     buttonsHTML += `<p class="dl-label">🎵 Audio Only</p>`;
     buttonsHTML += audios.map(f =>
-      `<a class="dl-btn dl-btn--audio" href="${f.url}" target="_blank" download>
+      `<button class="dl-btn dl-btn--audio" onclick="downloadFile('${f.url}', 'instaget_audio_${f.quality}.mp3', this)">
         ⬇ Download Audio ${f.quality}
-      </a>`
+      </button>`
     ).join('');
   }
 
   if (images.length > 0) {
     buttonsHTML += `<p class="dl-label">🖼️ Images</p>`;
     buttonsHTML += images.map((f, i) =>
-      `<a class="dl-btn dl-btn--image" href="${f.url}" target="_blank" download>
+      `<button class="dl-btn dl-btn--image" onclick="downloadFile('${f.url}', 'instaget_image_${i + 1}.jpg', this)">
         ⬇ Download Image ${i + 1} (${f.quality})
-      </a>`
+      </button>`
     ).join('');
   }
 
@@ -161,12 +161,12 @@ function displayResult(data) {
     if (formats.length > 0) {
       buttonsHTML += `<p class="dl-label">⬇ Download</p>`;
       buttonsHTML += formats.map((f, i) =>
-        `<a class="dl-btn" href="${f.url}" target="_blank" download>
+        `<button class="dl-btn" onclick="downloadFile('${f.url}', 'instaget_${i + 1}.${f.ext || 'mp4'}', this)">
           ⬇ Download ${f.quality || (i + 1)} ${f.ext ? f.ext.toUpperCase() : 'MP4'}
-        </a>`
+        </button>`
       ).join('');
     } else if (data.url) {
-      buttonsHTML = `<a class="dl-btn" href="${data.url}" target="_blank" download>⬇ Download</a>`;
+      buttonsHTML = `<button class="dl-btn" onclick="downloadFile('${data.url}', 'instaget.mp4', this)">⬇ Download</button>`;
     } else {
       buttonsHTML = '<p class="no-media">No downloadable media found.</p>';
     }
